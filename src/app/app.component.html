@@ -1,0 +1,36 @@
+<body>
+  <div class="container">
+
+    <img id="imagen" src="./assets/amazon-logo.png" height="50" />
+    
+    <div class="search-container">
+      <form action="/buscar" method="GET">
+        <select name="category" id="category">
+          <option value="all">Todos los departamentos</option>
+          <option value="electronics">Electrónicos</option>
+          <option value="clothing">Ropa</option>
+        </select>
+        <input
+          type="text"
+          id="search"
+          name="q"
+          placeholder="Ingrese su búsqueda"
+          required
+        />
+        <button type="submit">Buscar</button>
+      </form>
+
+      <button type="summit" id="Cesta">Cesta</button>
+
+      
+      <button (click)="cambiarLogin()" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
+    </div>
+  </div> 
+
+  <app-home *ngIf="mostrarComponente1"></app-home>
+  <app-login *ngIf="!mostrarComponente1"></app-login>
+
+
+
+  <app-footer></app-footer>
+</body>

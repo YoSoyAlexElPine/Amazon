@@ -1,0 +1,54 @@
+body {
+    width: 100%;
+    margin: 0cm;
+}
+
+
+    .container {
+      display: flex;
+      align-items: stretch;
+      padding: 10px;
+      box-sizing: border-box;
+      background: rgb(52, 73, 94);
+      margin: 0px;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: stretch;
+      padding: 20px;
+      margin: 0px;
+    }
+
+    input,
+    select,
+    button {
+      padding: 5px;
+      font-size: 16px;
+      margin-right: 10px; /* Ajusta según tus preferencias */
+      border: 1px solid #ccc;
+    }
+
+    select {
+      width: 160px;
+    }
+
+    button {
+      padding: 5px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #category {
+      margin-left: 10px;
+    }
+
+    #imagen {
+      padding: 10px;
+    }
+
+    #Cesta {
+      margin-left: 10px;
+    }
