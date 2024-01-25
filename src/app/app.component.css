@@ -7,17 +7,16 @@ body {
     .container {
       display: flex;
       align-items: stretch;
-      padding: 10px;
-      box-sizing: border-box;
-      background: rgb(52, 73, 94);
+      background: #0F1111;
       margin: 0px;
     }
 
     .search-container {
-      display: flex;
-      align-items: stretch;
-      padding: 20px;
+      padding-top: 20px;
       margin: 0px;
+    }
+    #cart-container {
+      padding-top: 20px;
     }
 
     input,
@@ -25,7 +24,6 @@ body {
     button {
       padding: 5px;
       font-size: 16px;
-      margin-right: 10px; /* Ajusta según tus preferencias */
       border: 1px solid #ccc;
     }
 
@@ -34,13 +32,11 @@ body {
     }
 
     button {
-      padding: 5px;
       background-color: #007BFF;
       color: #fff;
       border: none;
       cursor: pointer;
     }
-
     #category {
       margin-left: 10px;
     }
@@ -51,4 +47,15 @@ body {
 
     #Cesta {
       margin-left: 10px;
+    }
+    #Buscar {
+      width: 40px;
+      background-color: #f0bf4c;
+      border-bottom-right-radius: 10%;
+      border-top-right-radius: 10%;
+      
+    }
+    button img {
+      width: 15px;
+      height: 15px;
     }

@@ -17,15 +17,16 @@
           placeholder="Ingrese su búsqueda"
           required
         />
-        <button type="submit">Buscar</button>
+        <button type="submit" id="Buscar">
+          <img src="assets/busqueda2.png"> </button>
       </form>
-
+    </div>
+    <div id="cart-container">
       <button type="summit" id="Cesta">Cesta</button>
-
-      
       <button (click)="cambiarLogin()" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
     </div>
   </div> 
+  
 
   <app-home *ngIf="mostrarComponente1"></app-home>
   <app-login *ngIf="!mostrarComponente1"></app-login>
