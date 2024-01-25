@@ -22,6 +22,8 @@ import { Component } from '@angular/core';
           </div>
         </div>
 
+
+        
         <div class="slide slide_3">
           <div class="slide-content">
             <img src="./assets/slider3.jpg" width="100%">
