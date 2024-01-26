@@ -22,14 +22,19 @@
       </form>
     </div>
     <div id="cart-container">
-      <button type="summit" id="Cesta">Cesta</button>
-      <button (click)="cambiarLogin()" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
+      <button (click)="cambiarLogin()" type="summit" id="Cesta">Cesta</button>
+      <button (click)="cambiarCesta()" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
     </div>
   </div> 
   
-  <app-home *ngIf="mostrarComponente1"></app-home>
-  <app-login [usuario]="usuario" *ngIf="!mostrarComponente1"></app-login>
 
+
+
+
+
+  <app-home *ngIf="mostrarHome"></app-home>
+  <app-login [usuario]="usuario" *ngIf="mostrarLogin"></app-login>
+  <app-cesta *ngIf="mostrarCesta"></app-cesta>
 
 
   <app-footer></app-footer>

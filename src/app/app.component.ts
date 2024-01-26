@@ -17,7 +17,10 @@ import { UserService } from './user.service';
 export class AppComponent {
 
   botonLogin:String = "Iniciar sesion";
-  mostrarComponente1 = true;
+
+  mostrarHome = true
+  mostrarCesta = false
+  mostrarLogin = false
 
   usuario = {
     nombre: "",
@@ -25,14 +28,15 @@ export class AppComponent {
    }
 
   cambiarLogin() {
-    this.mostrarComponente1 = !this.mostrarComponente1;
+    this.mostrarLogin = !this.mostrarLogin;
     
-    if (this.botonLogin == "Iniciar sesion"){
-      this.botonLogin = "Home"
-    } else {
-      this.botonLogin = "Iniciar sesion"
-    }
-    
-
   }
+  cambiarCesta() {
+    this.mostrarCesta = !this.mostrarCesta;
+    this.mostrarHome = !this.mostrarCesta;
+  }
+  cambiarHome() {
+    this.mostrarHome = true;
+  }
+
 }
