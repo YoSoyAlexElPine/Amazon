@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../../INTERFACES/user.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   template: `
 <form class="container">
+
   <label for="usuario">Usuario:</label>
-  <input type="text" id="usuario" name="usuario" required >
+  <input [(ngModel)]="nombre" type="text" id="usuario" name="usuario" required >
 
   <label for="password">Password:</label>
-  <input type="password" id="contrasena" name="contrasena" required>
+  <input [(ngModel)]="password" type="password" id="contrasena" name="contrasena" required>
 
   <button type="button" (click)="iniciarSesion()">Iniciar Sesión</button>
   <button type="button" (click)="registrarse()">Registrarse</button>
@@ -67,14 +69,17 @@ import { User } from '../../INTERFACES/user.interface';
 })
 export class LoginComponent {
 
-  registrarse() {
-    const nombre = "alex";
-    const password = "1234";
+  nombre = ""
+  password = ""
 
-    if (nombre && password) {
-      const user: User = { nombre, password };
-      //this.addUser(user);
-    }
+  @Input() usuario = {
+    nombre: this.nombre,
+    password: this.password
+  }
+
+  registrarse() {
+    this.usuario.nombre = this.nombre
+    this.usuario.password = this.password
   }
 
 

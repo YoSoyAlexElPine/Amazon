@@ -19,6 +19,11 @@ export class AppComponent {
   botonLogin:String = "Iniciar sesion";
   mostrarComponente1 = true;
 
+  usuario = {
+    nombre: "",
+    password: ""
+   }
+
   cambiarLogin() {
     this.mostrarComponente1 = !this.mostrarComponente1;
     

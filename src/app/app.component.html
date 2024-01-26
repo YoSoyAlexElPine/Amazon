@@ -27,9 +27,8 @@
     </div>
   </div> 
   
-
   <app-home *ngIf="mostrarComponente1"></app-home>
-  <app-login *ngIf="!mostrarComponente1"></app-login>
+  <app-login [usuario]="usuario" *ngIf="!mostrarComponente1"></app-login>
 
 
 
