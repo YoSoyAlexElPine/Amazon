@@ -68,7 +68,7 @@ import { FormsModule } from '@angular/forms';
   }`
 })
 export class LoginComponent {
-
+  
   nombre = ""
   password = ""
 

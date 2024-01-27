@@ -13,4 +13,8 @@ import { Component } from '@angular/core';
 })
 export class CestaComponent {
 
+  component = 2
+
+  numProductos = 0
+
 }

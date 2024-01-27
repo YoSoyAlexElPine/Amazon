@@ -1,7 +1,7 @@
 <body>
   <div class="container">
 
-    <img id="imagen" src="./assets/amazon-logo.png" height="50" />
+    <img id="imagen" src="./assets/amazon-logo.png" height="50" (click)="cambiar(0)" />
     
     <div class="search-container">
       <form action="/buscar" method="GET">
@@ -17,13 +17,13 @@
           placeholder="Ingrese su búsqueda"
           required
         />
-        <button type="submit" id="Buscar">
+        <button (click)="cambiar(3)" type="submit" id="Buscar">
           <img src="assets/busqueda2.png"> </button>
       </form>
     </div>
     <div id="cart-container">
-      <button (click)="cambiarLogin()" type="summit" id="Cesta">Cesta</button>
-      <button (click)="cambiarCesta()" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
+      <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
+      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
     </div>
   </div> 
   
@@ -32,10 +32,10 @@
 
 
 
-  <app-home *ngIf="mostrarHome"></app-home>
-  <app-login [usuario]="usuario" *ngIf="mostrarLogin"></app-login>
-  <app-cesta *ngIf="mostrarCesta"></app-cesta>
-
+  <app-home *ngIf="componentes[0]"></app-home>
+  <app-login [usuario]="usuario" *ngIf="componentes[1]"></app-login>
+  <app-cesta *ngIf="componentes[2]"></app-cesta>
+  <app-busqueda *ngIf="componentes[3]"></app-busqueda>
 
   <app-footer></app-footer>
 </body>

@@ -329,7 +329,6 @@ body {
 export class HomeComponent {
   // Variable para rastrear el índice actual del slider
   currentIndex = 0;
-
   // Función para avanzar al siguiente slide
   nextSlide() {
     if (this.currentIndex < 3) {  // Cambia 3 al número total de imágenes - 1
