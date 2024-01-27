@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cesta',
-  standalone: true,
-  imports: [],
   template: `
     <p>
       cesta works!

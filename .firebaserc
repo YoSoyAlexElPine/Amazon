@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-94ab9": {
+      "hosting": {
+        "amazon": [
+          "fir-94ab9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-94ab9"
+  }
+}

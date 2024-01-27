@@ -1,64 +1,85 @@
 body {
-    width: 100%;
-    margin: 0cm;
+  width: 100%;
+  margin: 0cm;
+}
+
+.container {
+  display: flex;
+  align-items: stretch;
+  background: #121821;
+  margin: 0px;
+
 }
 
 
-    .container {
-      display: flex;
-      align-items: stretch;
-      background: #0F1111;
-      margin: 0px;
-    }
+.option-container {
+  background: #232e3f;
+}
 
-    .search-container {
-      padding-top: 20px;
-      margin: 0px;
-    }
-    #cart-container {
-      padding-top: 20px;
-    }
+.option-container button {
+  margin: 0px 0px 6px 0px;
+  padding: 13px 9px;
+  background: none;
+}
 
-    input,
-    select,
-    button {
-      padding: 4px;
-      font-size: 16px;
-      border: 1px solid
-       #ccc;
-    }
+.basic-container {
+  background: #fafbfb;
+  border-bottom: 1px solid #e7e7e7;
+}
+.basic-container button{
+  background: none;
+  color: black;
+  height: 31px;
+  line-height: 33px;
+  padding: 0 11px;
+}
 
-    select {
-      width: 160px;
-    }
+.search-container {
+  padding-top: 20px;
+  margin: 0px;
+}
+#cart-container {
+  padding-top: 20px;
+}
 
-    button {
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    #category {
-      margin-left: 10px;
-      height: 29px;
-    }
+input,
+select,
+button {
+  padding: 4px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
 
-    #imagen {
-      padding: 10px;
-      cursor: pointer;
-    }
+select {
+  width: 160px;
+}
 
-    #Cesta {
-      margin-left: 10px;
-    }
-    #Buscar {
-      width: 40px;
-      background-color: #f0bf4c;
-      border-bottom-right-radius: 10%;
-      border-top-right-radius: 10%;
-      
-    }
-    button img {
-      width: 15px;
-      height: 15px;
-    }
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#category {
+  margin-left: 10px;
+  height: 29px;
+}
+
+#imagen {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#Cesta {
+  margin-left: 10px;
+}
+#Buscar {
+  width: 40px;
+  background-color: #f0bf4c;
+  border-bottom-right-radius: 10%;
+  border-top-right-radius: 10%;
+}
+button img {
+  width: 15px;
+  height: 15px;
+}

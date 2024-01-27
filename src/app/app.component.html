@@ -21,11 +21,24 @@
           <img src="assets/busqueda2.png"> </button>
       </form>
     </div>
+
+
+
     <div id="cart-container">
       <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
-      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ botonLogin }}</button>
+      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">Entrar</button>
     </div>
   </div> 
+
+  <div class="option-container">
+    <button (click)="cambiar(5)" type="summit">Los más vendido</button>
+    <button (click)="cambiar(4)" type="summit">Amazon Basics</button>
+  </div>
+
+  <div class="basic-container" *ngIf="!componentes[0]">
+    <button (click)="cambiar(0)" style="font-weight: bold;" type="summit">Amazon.es</button>
+    <button (click)="cambiar(5)" type="summit">Los más vendidos</button>
+</div>
   
 
 
@@ -36,6 +49,8 @@
   <app-login [usuario]="usuario" *ngIf="componentes[1]"></app-login>
   <app-cesta *ngIf="componentes[2]"></app-cesta>
   <app-busqueda *ngIf="componentes[3]"></app-busqueda>
+  <app-basics *ngIf="componentes[4]"></app-basics>
+  <app-mas-vendidos *ngIf="componentes[5]"></app-mas-vendidos>
 
   <app-footer></app-footer>
 </body>

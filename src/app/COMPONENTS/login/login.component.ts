@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../../INTERFACES/user.interface';
+import { Component, Input, OnInit, getNgModuleById } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UsuarioService } from '../../services/usuario.services';
+import Usuario from '../../interfaces/user.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule],
   template: `
 <form class="container">
 
@@ -67,23 +67,125 @@ import { FormsModule } from '@angular/forms';
     background-color: #45a049;
   }`
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   
-  nombre = ""
-  password = ""
+  usuarios: Observable<Usuario[]> = this.userServices.getUsers()
+  nombres: string[] = [];
+  passwords: string[] = [];
 
-  @Input() usuario = {
+  constructor(
+    private userServices: UsuarioService,
+      ) {}
+
+  ngOnInit(): void {
+    this.usuarios.subscribe(usuarios => {
+      usuarios.forEach(usuario => {
+        
+        this.nombres.push(usuario.nombre.toString())
+        //console.log(usuario.nombre.toString())
+
+      });
+    });  
+
+
+    this.usuarios.subscribe(usuarios => {
+      usuarios.forEach(usuario => {
+        
+        this.passwords.push(usuario.password.toString())
+        //console.log(usuario.nombre.toString())
+
+      });
+    });  
+  
+  
+  
+  
+  }
+
+  nombre = "";
+  password = "";
+
+  
+
+  @Input() usuario: Usuario = {
     nombre: this.nombre,
     password: this.password
   }
 
-  registrarse() {
-    this.usuario.nombre = this.nombre
-    this.usuario.password = this.password
+  async registrarse() {
+
+    const existe = await this.existe()
+    
+
+    //console.log(this.nombre)
+
+    if (!existe) {
+      this.usuario.nombre = this.nombre
+      this.usuario.password = this.password
+
+
+      //this.userServices.addUser(this.usuario)
+
+      console.log(this.nombre + " agregado :)")
+    } else {
+      console.log(this.nombre + " ya existe")
+    }
+
+
   }
 
 
-  iniciarSesion() {
-    throw new Error('Method not implemented.');
+  async iniciarSesion() {
+
+    const existe:Boolean = await this.existe()
+    const correcto:Boolean = await this.correcto()
+
+
+    if (existe) {
+      if(correcto) {
+        console.log('Te logeaste :O')
+      } else {
+        console.log('Password incorrecta :#')
+      }
+
+    } else {
+      console.log(this.nombre + ' no fue encontrado :C')
+    }
+
+
+
   }
+
+
+  async existe(): Promise<Boolean> {
+
+    let existe:Boolean = false
+
+    this.nombres.forEach((n) => {
+      if(n === this.nombre) {
+        existe = true
+      }
+    })
+
+     
+
+    return existe
+  }
+
+  async correcto(): Promise<Boolean> {
+
+    let existe:Boolean = false
+
+    this.passwords.forEach((n) => {
+      if(n === this.password) {
+        existe = true
+      }
+    })
+
+     
+
+    return existe
+  }
+
+
 }

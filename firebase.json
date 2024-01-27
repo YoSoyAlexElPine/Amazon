@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "amazon",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

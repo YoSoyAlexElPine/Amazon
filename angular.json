@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Tienda": {
+    "amazon": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tienda",
+            "outputPath": "dist/amazon",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Tienda:build:production"
+              "buildTarget": "amazon:build:production"
             },
             "development": {
-              "buildTarget": "Tienda:build:development"
+              "buildTarget": "amazon:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Tienda:build"
+            "buildTarget": "amazon:build"
           }
         },
         "test": {
@@ -88,6 +98,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "amazon:build:production",
+              "serveTarget": "amazon:serve:production"
+            },
+            "development": {
+              "buildTarget": "amazon:build:development",
+              "serveTarget": "amazon:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
