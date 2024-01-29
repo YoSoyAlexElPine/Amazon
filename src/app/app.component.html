@@ -26,7 +26,14 @@
 
     <div id="cart-container">
       <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
-      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">Entrar</button>
+    
+@if(login) {
+  <button (click)="cambiar(6)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+} @else {
+  <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+
+}
+
     </div>
   </div> 
 
@@ -38,7 +45,7 @@
   <div class="basic-container" *ngIf="!componentes[0]">
     <button (click)="cambiar(0)" style="font-weight: bold;" type="summit">Amazon.es</button>
     <button (click)="cambiar(5)" type="summit">Los más vendidos</button>
-</div>
+  </div>
   
 
 
@@ -46,7 +53,12 @@
 
 
   <app-home *ngIf="componentes[0]"></app-home>
-  <app-login [usuario]="usuario" *ngIf="componentes[1]"></app-login>
+
+  @if(login){
+      <app-cuenta *ngIf="componentes[6]"></app-cuenta>
+  } @else {
+      <app-login *ngIf="componentes[1]" [usuario]="usuario" (nombreLogin)="recibirLogin($event)"></app-login>
+  }
   <app-cesta *ngIf="componentes[2]"></app-cesta>
   <app-busqueda *ngIf="componentes[3]"></app-busqueda>
   <app-basics *ngIf="componentes[4]"></app-basics>

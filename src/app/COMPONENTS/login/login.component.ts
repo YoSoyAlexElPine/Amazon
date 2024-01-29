@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, getNgModuleById } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, getNgModuleById } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.services';
 import Usuario from '../../interfaces/user.interface';
@@ -7,19 +7,35 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   template: `
-<form class="container">
+    <img (click)="home()" src="./assets/amazon-logo.png" alt="" />
 
-  <label for="usuario">Usuario:</label>
-  <input [(ngModel)]="nombre" type="text" id="usuario" name="usuario" required >
+    <form class="container" *ngIf="!visibilidadRegistro">
+      <label for="usuario">Usuario:</label>
+      <input
+        [(ngModel)]="nombre"
+        type="text"
+        id="usuario"
+        name="usuario"
+        required
+      />
 
-  <label for="password">Password:</label>
-  <input [(ngModel)]="password" type="password" id="contrasena" name="contrasena" required>
+      <label for="password">Password:</label>
+      <input
+        [(ngModel)]="password"
+        type="password"
+        id="contrasena"
+        name="contrasena"
+        required
+      />
 
-  <button type="button" (click)="iniciarSesion()">Iniciar Sesión</button>
-  <button type="button" (click)="registrarse()">Registrarse</button>
-</form>
+      <button type="button" (click)="iniciarSesion()">Iniciar Sesión</button>
+      <button type="button" (click)="registrarse()">Registrarse</button>
+    </form>
 
-
+    <app-register
+      *ngIf="visibilidadRegistro"
+      (mensajeEmitido)="recibirMensaje($event)"
+    ></app-register>
   `,
   styles: ` body {
     font-family: Arial, sans-serif;
@@ -65,127 +81,92 @@ import { Observable } from 'rxjs';
 
   button:hover {
     background-color: #45a049;
-  }`
+  }`,
 })
-export class LoginComponent implements OnInit{
-  
-  usuarios: Observable<Usuario[]> = this.userServices.getUsers()
+export class LoginComponent implements OnInit {
+  usuarios: Observable<Usuario[]> = this.userServices.getUsers();
   nombres: string[] = [];
   passwords: string[] = [];
 
-  constructor(
-    private userServices: UsuarioService,
-      ) {}
+  nombre = '';
+  password = '';
+  visibilidadRegistro = false;
 
-  ngOnInit(): void {
-    this.usuarios.subscribe(usuarios => {
-      usuarios.forEach(usuario => {
-        
-        this.nombres.push(usuario.nombre.toString())
-        //console.log(usuario.nombre.toString())
-
-      });
-    });  
-
-
-    this.usuarios.subscribe(usuarios => {
-      usuarios.forEach(usuario => {
-        
-        this.passwords.push(usuario.password.toString())
-        //console.log(usuario.nombre.toString())
-
-      });
-    });  
-  
-  
-  
-  
-  }
-
-  nombre = "";
-  password = "";
-
-  
-
+  @Output() volverHome = new EventEmitter<boolean>();
+  @Output() nombreLogin = new EventEmitter<string>();
+  @Output() visibilidadHome:boolean = false
   @Input() usuario: Usuario = {
     nombre: this.nombre,
-    password: this.password
+    password: this.password,
+  };
+
+  constructor(private userServices: UsuarioService) {}
+
+  ngOnInit(): void {
+    this.usuarios.subscribe((usuarios) => {
+      usuarios.forEach((usuario) => {
+        this.nombres.push(usuario.nombre.toString());
+        //console.log(usuario.nombre.toString())
+      });
+    });
+
+    this.usuarios.subscribe((usuarios) => {
+      usuarios.forEach((usuario) => {
+        this.passwords.push(usuario.password.toString());
+        //console.log(usuario.nombre.toString())
+      });
+    });
   }
 
-  async registrarse() {
-
-    const existe = await this.existe()
-    
-
-    //console.log(this.nombre)
-
-    if (!existe) {
-      this.usuario.nombre = this.nombre
-      this.usuario.password = this.password
-
-
-      this.userServices.addUser(this.usuario)
-
-      console.log(this.nombre + " agregado :)")
-    } else {
-      console.log(this.nombre + " ya existe")
-    }
-
-
+  registrarse() {
+    this.visibilidadRegistro = !this.visibilidadRegistro;
   }
 
+  home() {
+    this.visibilidadHome = true
+  }
 
   async iniciarSesion() {
-
-    const existe:Boolean = await this.existe()
-    const correcto:Boolean = await this.correcto()
-
+    const existe: Boolean = await this.existe();
+    const correcto: Boolean = await this.correcto();
 
     if (existe) {
-      if(correcto) {
-        console.log('Te logeaste :O')
+      if (correcto) {
+        console.log('Te logeaste :O');
+        this.nombreLogin.emit(this.nombre)
       } else {
-        console.log('Password incorrecta :#')
+        console.log('Password incorrecta :#');
       }
-
     } else {
-      console.log(this.nombre + ' no fue encontrado :C')
+      console.log(this.nombre + ' no fue encontrado :C');
     }
-
-
-
   }
 
+  recibirMensaje(mensaje: boolean) {
+    this.visibilidadRegistro = mensaje;
+  }
 
   async existe(): Promise<Boolean> {
-
-    let existe:Boolean = false
+    let existe: Boolean = false;
 
     this.nombres.forEach((n) => {
-      if(n === this.nombre) {
-        existe = true
+      if (n === this.nombre) {
+        existe = true;
       }
-    })
+    });
 
-     
-
-    return existe
+    return existe;
   }
 
   async correcto(): Promise<Boolean> {
-
-    let existe:Boolean = false
+    let existe: Boolean = false;
 
     this.passwords.forEach((n) => {
-      if(n === this.password) {
-        existe = true
+      if (n === this.password) {
+        existe = true;
       }
-    })
+    });
 
-     
-
-    return existe
+    return existe;
   }
-
-
 }

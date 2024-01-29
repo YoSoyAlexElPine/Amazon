@@ -1,8 +1,5 @@
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { Component, OnInit, Type } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./COMPONENTS/footer/footer.component";
 import { HomeComponent } from "./COMPONENTS/home/home.component";
@@ -34,11 +31,15 @@ export class AppComponent  {
   };
 
 
-
+  login = false
+  nombre = "Entrar"
   botonLogin: String = "Iniciar sesion";
 
   componentes = [
      true,
+     false,
+     false,
+     false,
      false,
      false,
      false,
@@ -61,6 +62,17 @@ export class AppComponent  {
 
 
   }
+
+  recibirLogin(nombre: string) {
+      this.nombre = nombre;
+      this.login = this.nombre != "Entrar"
+
+      if (this.login) {
+        this.cambiar(0)
+      }
+
+  }
+
 
 
 

@@ -23,6 +23,9 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../environment/environment';
 import { UsuarioService } from './services/usuario.services';
 import { Observable } from 'rxjs';
+import { RegisterComponent } from './COMPONENTS/register/register.component';
+import { CuentaComponent } from './COMPONENTS/cuenta/cuenta.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -34,15 +37,15 @@ import { Observable } from 'rxjs';
         BasicsComponent,
         MasVendidosComponent,
         FooterComponent,
-        
+        RegisterComponent,
+        CuentaComponent        
     ],
     providers: [UsuarioService],
     bootstrap: [AppComponent],
     imports: [
         FormsModule,
         BrowserModule,
-        AppRoutingModule,
-        
+        AppRoutingModule,        
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
