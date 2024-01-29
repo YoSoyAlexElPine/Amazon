@@ -124,7 +124,7 @@ export class LoginComponent implements OnInit{
       this.usuario.password = this.password
 
 
-      //this.userServices.addUser(this.usuario)
+      this.userServices.addUser(this.usuario)
 
       console.log(this.nombre + " agregado :)")
     } else {
