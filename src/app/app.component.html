@@ -58,11 +58,11 @@
   <app-home *ngIf="componentes[0]"></app-home>
 
   @if(login){
-      <app-cuenta *ngIf="componentes[6]"  [nombre]="nombre" (cerrarSesionBoolean)="recibirCerrarSesion($event)" ></app-cuenta>
+      <app-cuenta *ngIf="componentes[6]"  [usuario]="usuario" (cerrarSesionBoolean)="recibirCerrarSesion($event)" ></app-cuenta>
   } @else {
-      <app-login *ngIf="componentes[1]" [usuario]="usuario" (nombreLogin)="recibirLogin($event)" (volverHome)="recibirVolverHome($event)"></app-login>
+      <app-login *ngIf="componentes[1]" (nombreLogin)="recibirLogin($event)" (volverHome)="recibirVolverHome($event)"></app-login>
   }
-  <app-cesta *ngIf="componentes[2]"></app-cesta>
+  <app-cesta *ngIf="componentes[2]" [usuario]="usuario"></app-cesta>
   <app-busqueda *ngIf="componentes[3]"></app-busqueda>
   <app-basics *ngIf="componentes[4]"></app-basics>
   <app-mas-vendidos *ngIf="componentes[5]"></app-mas-vendidos>

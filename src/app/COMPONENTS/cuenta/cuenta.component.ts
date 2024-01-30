@@ -10,9 +10,8 @@ export class CuentaComponent {
 
 
   @Output() cerrarSesionBoolean = new EventEmitter<boolean>();
-  @Input() nombre = ''
-  usuario: Usuario = {
-    nombre: this.nombre,
+  @Input ()usuario: Usuario = {
+    nombre: '',
     password: '',
     cesta: []
   };

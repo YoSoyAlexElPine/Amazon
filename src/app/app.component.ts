@@ -18,37 +18,41 @@ import { Observable } from 'rxjs';
 import { UsuarioService } from './services/usuario.services';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
 })
-export class AppComponent  {
+export class AppComponent {
 
+  constructor(private userServices: UsuarioService) {}
+
+  usuarios: Observable<Usuario[]> = this.userServices.getUsers();
 
   usuario: Usuario = {
-    nombre: 'pedro',
+    nombre: 'invitado',
     password: '1234',
     cesta: []
   };
 
-
-  login = false
-  nombre = "Entrar"
-  botonLogin: String = "Iniciar sesion";
-
+  login:boolean = false
+  nombre: String = "Entrar"
+  botonLogin: string = "Iniciar sesion";
   componentes = [
-     true,
-     false,
-     false,
-     false,
-     false,
-     false,
-     false,
-     false,
-     false
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
   ];
 
-  
+
+
+
+
 
 
   cambiar(numero: number) {
@@ -64,13 +68,26 @@ export class AppComponent  {
 
   }
 
-  recibirLogin(nombre: string) {
-      this.nombre = nombre;
-      this.login = this.nombre != "Entrar"
+  recibirLogin(usuario: String) {
 
-      if (this.login) {
-        this.cambiar(0)
-      }
+    this.nombre = usuario;
+    this.login = this.nombre != "Entrar"
+
+    if (this.login) {
+      this.cambiar(0)
+    }
+
+    
+  if (this.login){
+    this.usuarios.subscribe((usuarios) => {
+      usuarios.forEach((usuario) => {
+        if (this.nombre === usuario.nombre) {
+          this.usuario = usuario
+          console.log(this.usuario.nombre)
+        }
+      });
+    });
+  }
 
   }
 
@@ -82,11 +99,11 @@ export class AppComponent  {
 
 
   recibirVolverHome(home: boolean) {
-    if (home){
+    if (home) {
       this.cambiar(0)
     }
 
-}
+  }
 
 
 

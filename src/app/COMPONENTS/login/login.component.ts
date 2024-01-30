@@ -136,6 +136,7 @@ export class LoginComponent implements OnInit {
     if (existe) {
       if (correcto) {
         console.log('Te logeaste :O');
+
         this.nombreLogin.emit(this.nombre)
       } else {
         console.log('Password incorrecta :#');
