@@ -7,7 +7,6 @@ body {
   display: flex;
   align-items: stretch;
   background: #121821;
-  margin: 0px;
 
 }
 
@@ -35,7 +34,10 @@ body {
   line-height: 33px;
   padding: 0 11px;
 }
-
+header{
+  padding-top: 20px;
+  margin: 0px;
+}
 .search-container {
   padding-top: 20px;
   margin: 0px;
@@ -57,10 +59,10 @@ select {
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
+  background-color:transparent;
   border: none;
   cursor: pointer;
+  color: white;
 }
 #category {
   margin-left: 10px;
@@ -75,11 +77,27 @@ button {
 #Cesta {
   margin-left: 10px;
 }
+#Cesta img {
+  width: 38px;
+  height: 26px;
+  
+}
+#imagen:hover{
+  border: 1px solid #ccc;
+}
+#cart-container:hover{
+    border: 1px solid #ccc;
+}
+
 #Buscar {
   width: 40px;
   background-color: #f0bf4c;
   border-bottom-right-radius: 10%;
   border-top-right-radius: 10%;
+}
+
+#envio:hover{
+  border: 1px solid #ccc;
 }
 button img {
   width: 15px;

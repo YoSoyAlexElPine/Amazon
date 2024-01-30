@@ -2,7 +2,12 @@
   <div class="container">
 
     <img id="imagen" src="./assets/amazon-logo.png" height="50" (click)="cambiar(0)" />
-    
+
+    <header>
+      <div id="envio">
+        <span type="button">Envios a madrid</span>
+      </div>
+    </header>
     <div class="search-container">
       <form action="/buscar" method="GET">
         <select name="category" id="category">
@@ -25,9 +30,10 @@
 
 
     <div id="cart-container">
-      <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
-      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">Entrar</button>
+      <button (click)="cambiar(2)" type="summit" id="Cesta">
+        <img src="assets/cesta.png" alt="cesta">Cesta</button>
     </div>
+      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">Hola,identificate</button>
   </div> 
 
   <div class="option-container">
