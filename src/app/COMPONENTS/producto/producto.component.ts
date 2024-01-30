@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import  Producto  from '../../interfaces/product.interface';
 import { ProductoServices } from '../../services/producto.services';
 import { Observable } from 'rxjs';
+import { UsuarioService } from '../../services/usuario.services';
+import Usuario from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-producto',
@@ -10,7 +12,14 @@ import { Observable } from 'rxjs';
 })
 export class ProductoComponent {
 
-  constructor(private productServices: ProductoServices) {}
+  agregarCesta() {
+    console.log('dentro de agregar cesta')
+    this.producto.cantidad = this.selectedNumber
+    this.userServices.agregarProductoALaCesta('bugs',this.producto)
+  }
+selectedNumber: number=0;
+
+  constructor(private userServices: UsuarioService) {}
   @Input() producto:Producto = {
     nombre: 'Iphone 12',
     nombre_titulo:'Apple iPhone 12 Pro, 128GB, Azul Pacifico - (Reacondicionado)',

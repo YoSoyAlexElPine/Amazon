@@ -26,6 +26,7 @@ export class AppComponent {
 
   constructor(private userServices: UsuarioService) {}
 
+
   usuarios: Observable<Usuario[]> = this.userServices.getUsers();
 
   usuario: Usuario = {
@@ -56,7 +57,6 @@ export class AppComponent {
 
 
   cambiar(numero: number) {
-
 
     for (const key in this.componentes) {
       this.componentes[key] = false;

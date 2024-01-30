@@ -4,11 +4,11 @@
     
 <div class="productos" *ngIf="productosVisible">
     <h1>Los más vendidos de Amazon</h1>
-    <div class="card" *ngFor="let producto of productos | async" (click)="productoDetalle(producto.nombre)">
+    <div class="card" *ngFor="let producto of productos | async" (click)="productoDetalle(producto)">
         <img src="./assets/{{producto.nombre | lowercase | quitarEspacios}}.jpg" alt="Producto" class="product-image">
         <div class="product-details">
             <h2 class="product-name">{{producto.nombre_titulo}}</h2>
-            <p class="product-price">{{producto.precio}}</p>
+            <p class="product-price">{{producto.precio | currency}}</p>
         </div>
     </div> 
 

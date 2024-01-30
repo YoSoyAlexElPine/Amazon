@@ -22,17 +22,11 @@ export class MasVendidosComponent {
     precio: 10.0,
   };
 
-  productoDetalle(productoNombre: string) {
+  productoDetalle(producto: Producto) {
     this.productosVisible = !this.productosVisible
    
-    const producto2:Producto = {
-      nombre: productoNombre,
-      nombre_titulo: '',
-      descripcion: "lorem",
-      precio: 10.0,
-    };
 
-    this.producto = producto2;
+    this.producto = producto;
 
   }
 

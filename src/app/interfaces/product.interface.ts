@@ -4,5 +4,6 @@ export default interface Producto {
     nombre_titulo: string;
     descripcion: string;
     precio: number;
+    cantidad?: number;
   }
   
