@@ -1,5 +1,8 @@
 <body>
-  <div class="container">
+  <div class="header" *ngIf="!componentes[1]">
+
+
+  <div class="container" >
 
     <img id="imagen" src="./assets/amazon-logo.png" height="50" (click)="cambiar(0)" />
     
@@ -27,12 +30,12 @@
     <div id="cart-container">
       <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
     
-@if(login) {
-  <button (click)="cambiar(6)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
-} @else {
-  <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+    @if(login) {
+      <button (click)="cambiar(6)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+    } @else {
+      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
 
-}
+    }
 
     </div>
   </div> 
@@ -47,7 +50,7 @@
     <button (click)="cambiar(5)" type="summit">Los más vendidos</button>
   </div>
   
-
+</div>
 
 
 
@@ -55,14 +58,14 @@
   <app-home *ngIf="componentes[0]"></app-home>
 
   @if(login){
-      <app-cuenta *ngIf="componentes[6]"></app-cuenta>
+      <app-cuenta *ngIf="componentes[6]"  [nombre]="nombre" (cerrarSesionBoolean)="recibirCerrarSesion($event)" ></app-cuenta>
   } @else {
-      <app-login *ngIf="componentes[1]" [usuario]="usuario" (nombreLogin)="recibirLogin($event)"></app-login>
+      <app-login *ngIf="componentes[1]" [usuario]="usuario" (nombreLogin)="recibirLogin($event)" (volverHome)="recibirVolverHome($event)"></app-login>
   }
   <app-cesta *ngIf="componentes[2]"></app-cesta>
   <app-busqueda *ngIf="componentes[3]"></app-busqueda>
   <app-basics *ngIf="componentes[4]"></app-basics>
   <app-mas-vendidos *ngIf="componentes[5]"></app-mas-vendidos>
 
-  <app-footer></app-footer>
+  <app-footer *ngIf="!componentes[1]"></app-footer>
 </body>

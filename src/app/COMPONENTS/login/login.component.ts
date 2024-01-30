@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   template: `
-    <img (click)="home()" src="./assets/amazon-logo.png" alt="" />
+    <img (click)="home()" src="./assets/amazon-logo.png" class="home" />
 
     <form class="container" *ngIf="!visibilidadRegistro">
       <label for="usuario">Usuario:</label>
@@ -47,6 +47,9 @@ import { Observable } from 'rxjs';
     margin: 0;
   }
 
+  .home{
+    cursor: pointer;
+  }
 
   
   form {
@@ -94,10 +97,10 @@ export class LoginComponent implements OnInit {
 
   @Output() volverHome = new EventEmitter<boolean>();
   @Output() nombreLogin = new EventEmitter<string>();
-  @Output() visibilidadHome:boolean = false
   @Input() usuario: Usuario = {
     nombre: this.nombre,
     password: this.password,
+    cesta: []
   };
 
   constructor(private userServices: UsuarioService) {}
@@ -123,7 +126,7 @@ export class LoginComponent implements OnInit {
   }
 
   home() {
-    this.visibilidadHome = true
+    this.volverHome.emit(true)
   }
 
   async iniciarSesion() {

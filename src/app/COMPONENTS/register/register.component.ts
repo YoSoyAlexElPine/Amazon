@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Usuario from '../../interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { UsuarioService } from '../../services/usuario.services';
+import { Producto } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   nombres: string[] = [];
   passwords: string[] = [];
 
-  constructor(private userServices: UsuarioService) {}
+  constructor(private userServices: UsuarioService) { }
 
   ngOnInit(): void {
     this.usuarios.subscribe((usuarios) => {
@@ -42,6 +43,7 @@ export class RegisterComponent implements OnInit {
     nombre: this.nombre,
     password: this.password,
     mailOrPhone: this.mailOrPhone,
+    cesta: [] as Producto[]
   };
 
   async registrarse() {
@@ -53,6 +55,7 @@ export class RegisterComponent implements OnInit {
       if (this.password === this.passwordConfirm) {
         this.usuario.nombre = this.nombre;
         this.usuario.password = this.password;
+        this.usuario.mailOrPhone = this.mailOrPhone;
 
         this.userServices.addUser(this.usuario);
 
@@ -65,8 +68,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-   entrar() {
-    this.mensajeEmitido.emit(true)
+  entrar() {
+    this.mensajeEmitido.emit(false)
   }
 
 

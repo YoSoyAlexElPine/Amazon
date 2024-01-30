@@ -27,7 +27,8 @@ export class AppComponent  {
 
   usuario: Usuario = {
     nombre: 'pedro',
-    password: '1234'
+    password: '1234',
+    cesta: []
   };
 
 
@@ -72,6 +73,20 @@ export class AppComponent  {
       }
 
   }
+
+  recibirCerrarSesion(cerrar: boolean) {
+    this.login = !cerrar
+    this.nombre = "Entrar"
+    this.cambiar(0)
+  }
+
+
+  recibirVolverHome(home: boolean) {
+    if (home){
+      this.cambiar(0)
+    }
+
+}
 
 
 
