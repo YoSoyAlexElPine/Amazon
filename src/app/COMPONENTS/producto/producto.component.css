@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.product-details {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.product-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.product-info h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+.product-info p {
+    margin: 10px 0;
+    color: #777;
+}
+
+.product-price {
+    font-size: 1.5em;
+    color: #e44d26;
+}

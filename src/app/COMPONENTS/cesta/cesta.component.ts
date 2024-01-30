@@ -11,9 +11,16 @@ import Usuario from '../../interfaces/user.interface';
   <h1>Nombre de usuario: {{usuario.nombre}}</h1>
 } @else {
   <h1>♥ Cesta ♥</h1>
-  <ul>
-    <li *ngFor="let item of usuario.cesta">{{ item | json}}</li>
-  </ul>
+  <div class="productos">
+    <div class="card" *ngFor="let producto of usuario.cesta">
+        <img src="./assets/{{producto.nombre | lowercase | quitarEspacios}}.jpg" alt="Producto" class="product-image">
+        <div class="product-details">
+            <h2 class="product-name">{{producto.nombre_titulo}}</h2>
+            <p class="product-price">{{producto.precio}}</p>
+        </div>
+    </div> 
+
+</div>
   <button>Comprar</button>
 }
 

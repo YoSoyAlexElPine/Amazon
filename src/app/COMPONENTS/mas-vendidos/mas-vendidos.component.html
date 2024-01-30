@@ -1,1 +1,24 @@
-<p>mas-vendidos works!</p>
+
+
+<body>
+    
+<div class="productos" *ngIf="productosVisible">
+    <h1>Los más vendidos de Amazon</h1>
+    <div class="card" *ngFor="let producto of productos | async" (click)="productoDetalle(producto.nombre)">
+        <img src="./assets/{{producto.nombre | lowercase | quitarEspacios}}.jpg" alt="Producto" class="product-image">
+        <div class="product-details">
+            <h2 class="product-name">{{producto.nombre_titulo}}</h2>
+            <p class="product-price">{{producto.precio}}</p>
+        </div>
+    </div> 
+
+</div>
+
+
+<app-producto *ngIf="!productosVisible" [producto]="producto"  ></app-producto>
+
+
+</body>
+
+
+

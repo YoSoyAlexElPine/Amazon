@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Usuario from '../../interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { UsuarioService } from '../../services/usuario.services';
-import { Producto } from '../../interfaces/product.interface';
+import Producto from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-register',

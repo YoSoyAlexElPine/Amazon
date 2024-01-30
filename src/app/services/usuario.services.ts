@@ -2,7 +2,7 @@ import { Firestore, collection, addDoc, collectionData, doc, deleteDoc } from '@
 import { Observable } from 'rxjs';
 import Usuario from '../interfaces/user.interface';
 import { Injectable } from '@angular/core';
-import { Producto } from '../interfaces/product.interface';
+import  Producto  from '../interfaces/product.interface';
 
 @Injectable({
     providedIn: 'root'

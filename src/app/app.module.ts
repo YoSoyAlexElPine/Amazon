@@ -1,9 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -22,11 +18,11 @@ import { FooterComponent } from "./COMPONENTS/footer/footer.component";
 import { FormsModule } from '@angular/forms';
 import { environment } from '../environment/environment';
 import { UsuarioService } from './services/usuario.services';
-import { Observable } from 'rxjs';
 import { RegisterComponent } from './COMPONENTS/register/register.component';
 import { CuentaComponent } from './COMPONENTS/cuenta/cuenta.component';
-import { CommonModule } from '@angular/common';
-
+import { ProductoComponent } from './COMPONENTS/producto/producto.component';
+import { ProductoServices } from './services/producto.services';
+import { QuitarEspaciosPipe } from './quitar-espacios.pipe';
 @NgModule({
     declarations: [
         AppComponent,
@@ -38,9 +34,11 @@ import { CommonModule } from '@angular/common';
         MasVendidosComponent,
         FooterComponent,
         RegisterComponent,
-        CuentaComponent        
+        CuentaComponent,
+        ProductoComponent,
+        QuitarEspaciosPipe
     ],
-    providers: [UsuarioService],
+    providers: [UsuarioService,ProductoServices],
     bootstrap: [AppComponent],
     imports: [
         FormsModule,
