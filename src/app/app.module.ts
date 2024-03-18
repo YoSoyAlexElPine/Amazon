@@ -23,6 +23,7 @@ import { CuentaComponent } from './COMPONENTS/cuenta/cuenta.component';
 import { ProductoComponent } from './COMPONENTS/producto/producto.component';
 import { ProductoServices } from './services/producto.services';
 import { QuitarEspaciosPipe } from './quitar-espacios.pipe';
+import { NgImageSliderModule } from 'ng-image-slider';
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,7 +44,8 @@ import { QuitarEspaciosPipe } from './quitar-espacios.pipe';
     imports: [
         FormsModule,
         BrowserModule,
-        AppRoutingModule,        
+        AppRoutingModule,
+        NgImageSliderModule,        
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),

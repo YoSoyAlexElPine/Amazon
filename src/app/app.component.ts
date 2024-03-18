@@ -1,18 +1,4 @@
-import { Component, OnInit, Type } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from "./COMPONENTS/footer/footer.component";
-import { HomeComponent } from "./COMPONENTS/home/home.component";
-import { CestaComponent } from "./COMPONENTS/cesta/cesta.component";
-import { LoginComponent } from "./COMPONENTS/login/login.component";
-import { BusquedaComponent } from "./COMPONENTS/busqueda/busqueda.component";
-import { BasicsComponent } from "./COMPONENTS/basics/basics.component";
-import { MasVendidosComponent } from "./COMPONENTS/mas-vendidos/mas-vendidos.component";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { Firestore, FirestoreModule, addDoc, collection, collectionData } from '@angular/fire/firestore';
-import { environment } from '../environment/environment';
-import { User } from '@angular/fire/auth';
+import { Component} from '@angular/core';
 import Usuario from './interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { UsuarioService } from './services/usuario.services';
@@ -49,11 +35,6 @@ export class AppComponent {
     false,
     false
   ];
-
-
-
-
-
 
 
   cambiar(numero: number) {
@@ -104,6 +85,8 @@ export class AppComponent {
     }
 
   }
+
+
 
 
 

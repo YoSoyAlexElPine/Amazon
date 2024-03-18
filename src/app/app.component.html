@@ -1,71 +1,62 @@
-<body>
-  <div class="header" *ngIf="!componentes[1]">
-
-
-  <div class="container" >
-
-    <img id="imagen" src="./assets/amazon-logo.png" height="50" (click)="cambiar(0)" />
-    
-    <div class="search-container">
-      <form action="/buscar" method="GET">
-        <select name="category" id="category">
-          <option value="all">Todos los departamentos</option>
-          <option value="electronics">Electrónicos</option>
-          <option value="clothing">Ropa</option>
-        </select>
-        <input
-          type="text"
-          id="search"
-          name="q"
-          placeholder="Ingrese su búsqueda"
-          required
-        />
-        <button (click)="cambiar(3)" type="submit" id="Buscar">
-          <img src="assets/busqueda2.png"> </button>
-      </form>
-    </div>
-
-
-
-    <div id="cart-container">
-      <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
-    
-    @if(login) {
-      <button (click)="cambiar(6)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
-    } @else {
-      <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
-
-    }
-
-    </div>
-  </div> 
-
-  <div class="option-container">
-    <button (click)="cambiar(5)" type="summit">Los más vendido</button>
-    <button (click)="cambiar(4)" type="summit">Amazon Basics</button>
-  </div>
-
-  <div class="basic-container" *ngIf="!componentes[0]">
-    <button (click)="cambiar(0)" style="font-weight: bold;" type="summit">Amazon.es</button>
-    <button (click)="cambiar(5)" type="summit">Los más vendidos</button>
-  </div>
+<head>
+  <meta charset="utf-8">
   
-</div>
+</head>
 
-
-
-
-  <app-home *ngIf="componentes[0]"></app-home>
-
-  @if(login){
-      <app-cuenta *ngIf="componentes[6]"  [usuario]="usuario" (cerrarSesionBoolean)="recibirCerrarSesion($event)" ></app-cuenta>
-  } @else {
+<body>
+  <header class="header" *ngIf="!componentes[1]">
+    <nav class="container">
+      <img id="imagen" src="./assets/amazon-logo.png" height="50" (click)="cambiar(0)" />
+      <nav class="search-container">
+        <form action="/buscar" method="GET">
+          <select name="category" id="category">
+            <option value="all">Todos los departamentos</option>
+            <option value="electronics">Electrónicos</option>
+            <option value="clothing">Ropa</option>
+          </select>
+          <input
+            type="text"
+            id="search"
+            name="q"
+            placeholder="Ingrese su búsqueda"
+            required
+          />
+          <button (click)="cambiar(3)" type="submit" id="Buscar">
+            <img src="assets/busqueda2.png">
+          </button>
+        </form>
+      </nav>
+      <nav id="cart-container">
+        <button (click)="cambiar(2)" type="summit" id="Cesta">Cesta</button>
+        <ng-container *ngIf="login; else elseBlock">
+          <button (click)="cambiar(6)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+        </ng-container>
+        <ng-template #elseBlock>
+          <button (click)="cambiar(1)" type="summit" id="Iniciar_sesion">{{ nombre }}</button>
+        </ng-template>
+      </nav>
+    </nav>
+    <nav class="option-container">
+      <button (click)="cambiar(5)" type="summit">Los más vendido</button>
+      <button (click)="cambiar(4)" type="summit">Amazon Basics</button>
+    </nav>
+    <nav class="basic-container" *ngIf="!componentes[0]">
+      <button (click)="cambiar(0)" style="font-weight: bold;" type="summit">Amazon.es</button>
+      <button (click)="cambiar(5)" type="summit">Los más vendidos</button>
+    </nav>
+  </header>
+  <main>
+    <app-home *ngIf="componentes[0] "></app-home>
+    <ng-container *ngIf="login; else elseBlock2">
+      <app-cuenta *ngIf="componentes[6]" [usuario]="usuario" (cerrarSesionBoolean)="recibirCerrarSesion($event)"></app-cuenta>
+    </ng-container>
+    <ng-template #elseBlock2>
       <app-login *ngIf="componentes[1]" (nombreLogin)="recibirLogin($event)" (volverHome)="recibirVolverHome($event)"></app-login>
-  }
-  <app-cesta *ngIf="componentes[2]" [usuario]="usuario"></app-cesta>
-  <app-busqueda *ngIf="componentes[3]"></app-busqueda>
-  <app-basics *ngIf="componentes[4]"></app-basics>
-  <app-mas-vendidos *ngIf="componentes[5]"></app-mas-vendidos>
-
+    </ng-template>
+    <app-cesta *ngIf="componentes[2]" [usuario]="usuario"></app-cesta>
+    <app-busqueda *ngIf="componentes[3]"></app-busqueda>
+    <app-basics *ngIf="componentes[4]"></app-basics>
+    <app-mas-vendidos *ngIf="componentes[5]"></app-mas-vendidos>
+  </main>
   <app-footer *ngIf="!componentes[1]"></app-footer>
 </body>

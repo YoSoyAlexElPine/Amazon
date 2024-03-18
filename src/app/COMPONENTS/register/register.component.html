@@ -1,18 +1,31 @@
-<form class="container">
-
-    <label for="usuario">Nombre</label>
-    <input [(ngModel)]="nombre" type="text" id="usuario" name="usuario" required >
+<main>
+  <form class="container">
+    <h1>Crear cuenta</h1>
+      <label for="usuario">Nombre</label>
+      <input [(ngModel)]="nombre" type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required >
+      
+      <label for="password">Número de móvil o dirección de correo electrónico</label>
+      <input [(ngModel)]="mailOrPhone" type="password" id="contrasena" name="contrasena" required>
     
-    <label for="password">Número de móvil o dirección de correo electrónico</label>
-    <input [(ngModel)]="mailOrPhone" type="password" id="contrasena" name="contrasena" required>
-  
-    <label for="password">Password</label>
-    <input [(ngModel)]="password" type="password" id="contrasena" name="contrasena" required>
+      <label for="password">Password</label>
+      <input [(ngModel)]="password" type="password" id="contrasena" name="contrasena" placeholder="Al menos 6 caracteres" required>
+      
+      <label for="password">Confirmar password</label>
+      <input [(ngModel)]="passwordConfirm" type="password" id="contrasena" name="contrasena" required>
     
-    <label for="password">Confirmar password</label>
-    <input [(ngModel)]="passwordConfirm" type="password" id="contrasena" name="contrasena" required>
-  
-    <button type="button" (click)="registrarse()">Continuar</button>
-    <button type="button" (click)="entrar()">Ya tengo cuenta</button>
+      <button id="continuar" type="button" (click)="registrarse()">Continuar</button>
+      
+      <p>
+        Al continuar, aceptas las <a href="https://www.amazon.es/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=200545940">
+        Condiciones de uso y venta</a> de Amazon. 
+        Consulta nuestro <a href="https://www.amazon.es/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=200545460">
+        Aviso de privacidad</a>, nuestro <a href="https://www.amazon.es/gp/help/customer/display.html/?nodeId=201890250">
+        Aviso sobre cookies</a> y 
+        nuestro <a href="https://www.amazon.es/gp/help/customer/display.html?nodeId=201909150">
+        Aviso sobre anuncios basados en intereses.</a>
+      </p> 
+      
 
-  </form>
+      <p>¿Ya tiene una cuenta? <a (click)="entrar()">Iniciar sesión</a></p>
+    </form>
+</main>

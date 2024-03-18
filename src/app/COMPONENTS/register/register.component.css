@@ -1,23 +1,33 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+ 
+
+  @font-face {
+    font-family: 'Amazon Ember';
+    src: url('../../../assets/fonts/Amazon Ember.ttf') format('truetype');
+  }
+
+  main {
+    background-color: white;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-weight: normal;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     margin: 0;
   }
-
-
   
-  form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+  label {
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-weight: bold;
   }
 
+  form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px; 
+    width: 400px;
+  }
+  
   label {
     display: block;
     margin-bottom: 8px;
@@ -30,9 +40,42 @@ body {
     box-sizing: border-box;
   }
 
-  button {
-    background-color: #4caf50;
-    color: #fff;
+  p,a {
+    font-size: 14px;
+  }
+
+  a {
+    color: #007acc; /* Azul más claro */
+    text-decoration: none; /* Eliminar subrayado por defecto */
+
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #d35400; /* Naranja más oscuro */
+    text-decoration: underline; /* Añadir subrayado al pasar el ratón */
+
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+ }
+
+  .image-container img {
+    cursor: pointer;
+    padding: 20px;
+    height: 50px;
+  }
+
+
+  #continuar {
+    background-color: #ffd915;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    width: 100%;
+    color: black;
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -40,6 +83,7 @@ body {
     font-size: 16px;
   }
 
-  button:hover {
-    background-color: #45a049;
+  #continuar:hover {
+    background-color: #f6ca01;
   }
+

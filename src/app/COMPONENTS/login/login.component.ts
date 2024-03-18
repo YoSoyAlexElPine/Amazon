@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   template: `
-    <img (click)="home()" src="./assets/amazon-logo.png" class="home" />
-
-    <form class="container" *ngIf="!visibilidadRegistro">
-      <label for="usuario">Usuario:</label>
+    <main>
+  <nav class="image-container">
+    <img src="./assets/amazon_logo_negro.png" alt="Home">
+  </nav>      
+  <div class="container"  *ngIf="!visibilidadRegistro">
+    <form>
+      <h1>Iniciar sesión</h1>
+      <label for="usuario"><b>Nombre de usuario</b></label>
       <input
         [(ngModel)]="nombre"
         type="text"
@@ -19,7 +23,7 @@ import { Observable } from 'rxjs';
         required
       />
 
-      <label for="password">Password:</label>
+      <label for="password"><b>Contraseña</b></label>
       <input
         [(ngModel)]="password"
         type="password"
@@ -27,30 +31,73 @@ import { Observable } from 'rxjs';
         name="contrasena"
         required
       />
+      
+      <button id="login" type="button" (click)="iniciarSesion()">Iniciar Sesión</button>
 
-      <button type="button" (click)="iniciarSesion()">Iniciar Sesión</button>
-      <button type="button" (click)="registrarse()">Registrarse</button>
+      <p>
+          Al continuar, aceptas las <a href="https://www.amazon.es/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=200545940">
+          Condiciones de uso y venta</a> de Amazon. 
+          Consulta nuestro <a href="https://www.amazon.es/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=200545460">
+          Aviso de privacidad</a>, nuestro <a href="https://www.amazon.es/gp/help/customer/display.html/?nodeId=201890250">
+          Aviso sobre cookies</a> y 
+          nuestro <a href="https://www.amazon.es/gp/help/customer/display.html?nodeId=201909150">
+          Aviso sobre anuncios basados en intereses.</a>
+      </p>
+
+      <details>
+        <summary><a href="">¿Necesitas ayuda?</a></summary>
+        <ul>
+          <li><a>¿Has olvidado la contraseña?</a></li>
+          <li><a>Otros problemas al inicial sesion</a></li>
+        </ul>
+      </details>
+  
     </form>
+
+      <h5 class="divider" aria-level="5">¿Eres nuevo en amazon?</h5>
+
+    <button id="registro" type="button" (click)="registrarse()">Crea tu cuenta de Amazon</button>
+
+    </div>
+
 
     <app-register
       *ngIf="visibilidadRegistro"
       (mensajeEmitido)="recibirMensaje($event)"
     ></app-register>
+
+    </main>
   `,
-  styles: ` body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+  styles: ` 
+
+  @font-face {
+    font-family: 'Amazon Ember';
+    src: url('../../../assets/fonts/Amazon Ember.ttf') format('truetype');
+  }
+
+  .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+    justify-content: center; /* Alinear horizontalmente al centro */
+    align-items: center; /* Alinear verticalmente al centro */
+    flex-direction: column; /* Alinear elementos verticalmente */
   }
 
-  .home{
-    cursor: pointer;
+
+  // .divider {
+  //   border-top: 1px solid #e7e7e7;
+  // }
+
+
+  main {
+    background-color: white;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-weight: normal;
   }
 
+  h5 {
+    color: #797978; 
+    font-weight: normal;
+  }
   
   form {
     background-color: #fff;
@@ -59,7 +106,7 @@ import { Observable } from 'rxjs';
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
   }
-
+  
   label {
     display: block;
     margin-bottom: 8px;
@@ -72,9 +119,41 @@ import { Observable } from 'rxjs';
     box-sizing: border-box;
   }
 
-  button {
-    background-color: #4caf50;
-    color: #fff;
+  p,a {
+    font-size: 14px;
+  }
+
+  a {
+    color: #007acc; /* Azul más claro */
+    text-decoration: none; /* Eliminar subrayado por defecto */
+
+  }
+
+  a:hover {
+    color: #d35400; /* Naranja más oscuro */
+    text-decoration: underline; /* Añadir subrayado al pasar el ratón */
+
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+ }
+
+  .image-container img {
+    cursor: pointer;
+    padding: 20px;
+    height: 50px;
+  }
+
+
+  #login {
+    background-color: #ffd915;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    width: 100%;
+    color: black;
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -82,9 +161,25 @@ import { Observable } from 'rxjs';
     font-size: 16px;
   }
 
-  button:hover {
-    background-color: #45a049;
-  }`,
+  #login:hover {
+    background-color: #f6ca01;
+  }
+
+  #registro {
+    background-color: white;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    outline: 0;
+    width: 100%;
+    max-width: 320px;
+    color: black;
+    border: 2px solid #edecec;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  `,
 })
 export class LoginComponent implements OnInit {
   usuarios: Observable<Usuario[]> = this.userServices.getUsers();
@@ -103,7 +198,7 @@ export class LoginComponent implements OnInit {
     cesta: []
   };
 
-  constructor(private userServices: UsuarioService) {}
+  constructor(private userServices: UsuarioService) { }
 
   ngOnInit(): void {
     this.usuarios.subscribe((usuarios) => {
